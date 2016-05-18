@@ -340,6 +340,9 @@ Global (system-wide) codes
 |CountryId|boec_code|`string`|3|||
 |CountryDescription|boec_descr|`string`|50|||
 
++ Request
+    [AccessToken][]
+
 + Response 200 (application/json)
     + Attributes (array [Country])
 
@@ -356,6 +359,9 @@ Global (system-wide) codes
 |--------|-----------|----|----------|-----|----------|
 |CurrencyId|fxr20_ccy|`string`|3|||
 |CurrencyDescription|fxr20_descr|`string`|20|||
+
++ Request
+    [AccessToken][]
 
 + Response 200 (application/json)
     + Attributes (array [Currency])
@@ -457,6 +463,9 @@ NEW - todo: description
 |EDICode|cmy15_altcode|`string`|20|||
 |Status|cmy15_inactive|`string`|1|||
 
++ Request
+    [AccessToken][]
+
 + Response 200 (application/json)
     + Attributes (array[PaymentTerm])
     
@@ -477,6 +486,9 @@ NEW - todo: description
 |CountryCode|cmy16_ctry|`string`|3|||
 |EDICode|cmy16_localcode|`string`|10|||
 |Status|cmy16_inactive|`string`|1|||
+
++ Request
+    [AccessToken][]
 
 + Response 200 (application/json)
     + Attributes (array [Port List])
@@ -579,7 +591,24 @@ NEW - todo: description
 ## Vessel List [/ReferenceData/{TradingEntityId}/Physicals/Vessel/{Property}/{PropertyValue}]
 http://docs.itasapiv2r1.apiary.io/#reference/physicals-reference-data/vessels-list/list-currencies
 ### List Vessels [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|VesselId|ves01_vessel|`string`|30|||
+|VesselDescription|ves01_descr|`string`|50|||
+|CountryCode|ves01_flag|`string`|3|||
+|Status|ves01_inactive|`string`|1|||
+
++ Request
+    [AccessToken][]
+
 + Response 200 (application/json)
+    + Attributes (array [Port List])
+    
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## Weight List [/ReferenceData/{TradingEntityId}/Physicals/Weight/{Property}/{PropertyValue}]
 ### List Weights [GET]
@@ -1475,15 +1504,15 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + PortId: AQABA (required, string)
 + PortDescription: Aqaba (required, string)
 + DocumentText: Text to be used in the sameple document.  (string)
-+ Country: (County)
++ Country (County)
 + EDICode: abcde12344 (string)
 + Status: F (string)
 
 ## Port List
 + PortId: AQABA (required, string)
 + PortDescription: Aqaba (required, string)
-+ DocumentText: Text to be used in the sameple document.  (string)
-+ CountryCode (Country))
++ DocumentText: Text to be used in the sameple document  (string)
++ CountryCode: GB (string)
 + EDICode: abcde12344 (string)
 + Status: F (string)
 
@@ -1612,6 +1641,13 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + TerminalId: ADEL (string)
 + TerminalDescription: `Santos-Santa Adelia` (string)
 + countryCode: BRA (string)
+
+## Vessel List (object)
++ VesselId: MV MERSEY FISHER (string)
++ VesselDescription: Description of Vessel (string)
++ CountryCode: GB (string)
++ Status: F (string)
+
 
 ## Weight (object)
 + WeightId: GA (string)
