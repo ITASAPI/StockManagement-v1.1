@@ -333,14 +333,38 @@ User-defined categorisation codes that can be applied to departments and bank ac
 Global (system-wide) codes 
 
 ## Country List [/ReferenceData/Global/Country/{Property}/{PropertyValue}]
-See documentation in Apiary V2.1 for full details: http://docs.itasapiv2r1.apiary.io/#reference/global-reference-data/countries-list/list-countries
+`Updated` URI is now singular, added error responses.
 ### List Countries [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|CountryId|boec_code|`string`|3|||
+|CountryDescription|boec_descr|`string`|50|||
+
 + Response 200 (application/json)
+    + Attributes (Country)
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## Currency List [/ReferenceData/Global/Currency/{Property}/{PropertyValue}]
-See documentation in Apiary V2.1 for full details: http://docs.itasapiv2r1.apiary.io/#reference/global-reference-data/currencies-list/list-currencies
+`Updated` URI is now singular, added error responses.
 ### List Currencies [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|CurrencyId|fxr20_ccy|`string`|3|||
+|CurrencyDescription|fxr20_descr|`string`|20|||
+
 + Response 200 (application/json)
+    + Attributes (Currency)
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 
 # Group Physicals Reference Data
