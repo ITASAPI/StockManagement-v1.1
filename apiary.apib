@@ -589,7 +589,7 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## Vessel List [/ReferenceData/{TradingEntityId}/Physicals/Vessel/{Property}/{PropertyValue}]
-http://docs.itasapiv2r1.apiary.io/#reference/physicals-reference-data/vessels-list/list-currencies
+`Updated` URI is now singular, added error responses.
 ### List Vessels [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -602,7 +602,7 @@ http://docs.itasapiv2r1.apiary.io/#reference/physicals-reference-data/vessels-li
     [AccessToken][]
 
 + Response 200 (application/json)
-    + Attributes (array [Port List])
+    + Attributes (array [Vessel List])
     
 + Response 400 (application/json)
     + Attributes (400 BadPropertyResponse)
