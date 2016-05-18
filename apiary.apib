@@ -16,7 +16,7 @@ Model Header containing AccessToken
             Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
 # Group Client Reference Data
-Codes relating to Client Ledger and related endpoints.
+Client Ledger Account profile.
 
 ## ClientAccount List [/ReferenceData/{TradingEntityId}/ClientLedger/ClientAccount/{Property}/{PropertyValue}]
 
@@ -113,8 +113,9 @@ For Update requests the field `ClientAccountId` cannot be changed.
 
 
 ## ClientType List [/ReferenceData/{TradingEntityId}/ClientLedger/ClientType/{Property}/{PropertyValue}]
-### List ClientTypes [GET]
 User-defined list of codes used for classification purposes on Client Account profile.
+### List ClientTypes [GET]
+
 + Request
     [AccessToken][]
     
@@ -139,9 +140,8 @@ User-defined list of codes used for classification purposes on Client Account pr
 Codes relating to Nominal Ledger and related endpoints.
 
 ## Department List [/ReferenceData/{TradingEntityId}/NominalLedger/Department/{Property}/{PropertyValue}]
-List all Departments in a given Trading Entity
+Codes used to segregate business sectors within a trading company, and can be applied to contracts and accounting transactions.
 ### List Departments [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -176,10 +176,9 @@ NEW - todo: description
 
 
 ## Department [/ReferenceData/{TradingEntityId}/NominalLedger/Department/{DepartmentId}]
-Details of a specific Department 
+Codes used to segregate business sectors within a trading company, and can be applied to contracts and accounting transactions.
 
 ### Read Department [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -204,7 +203,7 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## NominalAccount List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalAccount/{Property}/{PropertyValue}]
-Nominal (General) Ledger Account profile
+Nominal (General) Ledger Account profile.
 
 ### List NominalAccounts [GET]
 `Updated` this URI's endpoint is now singular, additional objects added to the 200 response.
@@ -241,8 +240,7 @@ Nominal (General) Ledger Account profile
     + Attributes (404 Response)
 
 ## NominalAccount [/ReferenceData/{TradingEntityId}/NominalLedger/NominalAccount/{NominalAccountId}]
-Nominal (General) Ledger Account profile
-
+Nominal (General) Ledger Account profile.
 
 ### Read NominalAccount [GET]
 `Updated` this URI's endpoint is now singular.
@@ -300,7 +298,7 @@ Nominal (General) Ledger Account profile
     + Attributes (404 Response)
 
 ## NominalCategory List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalCategory/{Property}/{PropertyValue}]
-User-defined categorisation codes that can be applied to departments and bank accounts
+User-defined categorisation codes that can be applied to departments and bank accounts.
 ### List NominalCategories [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -333,8 +331,9 @@ User-defined categorisation codes that can be applied to departments and bank ac
 Global (system-wide) codes 
 
 ## Country List [/ReferenceData/Global/Country/{Property}/{PropertyValue}]
-`Updated` URI is now singular, added error responses.
+Country codes.
 ### List Countries [GET]
+`Updated` URI is now singular, added error responses.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |CountryId|boec_code|`string`|3|||
@@ -353,8 +352,9 @@ Global (system-wide) codes
     + Attributes (404 Response)
 
 ## Currency List [/ReferenceData/Global/Currency/{Property}/{PropertyValue}]
-`Updated` URI is now singular, added error responses.
+Currency codes.
 ### List Currencies [GET]
+`Updated` URI is now singular, added error responses.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |CurrencyId|fxr20_ccy|`string`|3|||
@@ -377,8 +377,8 @@ Global (system-wide) codes
 Codes relating to Physicals Trading and related endpoints
 
 ## Commodity List [/ReferenceData/{TradingEntityId}/Physicals/Commodity/{Property}/{PropertyValue}]
+Commodity/Product codes, used to identify goods.
 ### List Commodities [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -421,8 +421,8 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## PackingType List [/ReferenceData/{TradingEntityId}/Physicals/PackingType/{Property}/{PropertyValue}]
+Codes used to describe the units of packing applied in physical contracts.
 ### List PackingTypes [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -453,8 +453,9 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## PaymentTerm List [/ReferenceData/{TradingEntityId}/Physicals/PaymentTerm/{Property}/{PropertyValue}]
-`Updated` URI is now singular, added error responses.
+Codes used to describe terms of payment applied to physical contracts through to accounting
 ### List PaymentTerms [GET]
+`Updated` URI is now singular, added error responses.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |PaymentTermId|cmy15_pterms|`string`|8|||
@@ -476,8 +477,9 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## Port List [/ReferenceData/{TradingEntityId}/Physicals/Port/{Property}/{PropertyValue}]
-`Updated` URI is now singular, added error responses.
+Codes used to identify physical port locations.
 ### List Ports [GET]
+`Updated` URI is now singular, added error responses.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |PortId|cmy16_port|`string`|8|||
@@ -500,8 +502,8 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## Sample List [/ReferenceData/{TradingEntityId}/Physicals/Sample/{Property}/{PropertyValue}]
+Codes used to identify specific product qualities.
 ### List Samples [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -531,8 +533,8 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## ShippingStatus List [/ReferenceData/{TradingEntityId}/Physicals/ShippingStatus/{Property}/{PropertyValue}]
+Codes used to classify the status in terms of movement, useful for reporting purposes.
 ### List ShippingStatuses [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -559,8 +561,8 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## Terminal List [/ReferenceData/{TradingEntityId}/Physicals/Terminal/{Property}/{PropertyValue}]
+Codes used to identify specific terminal location, useful for reporting purposes.
 ### List Terminals [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -589,8 +591,9 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## Vessel List [/ReferenceData/{TradingEntityId}/Physicals/Vessel/{Property}/{PropertyValue}]
-`Updated` URI is now singular, added error responses.
+List of Vessel names that can be applied as part of any physical logistics strategy
 ### List Vessels [GET]
+`Updated` URI is now singular, added error responses.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |VesselId|ves01_vessel|`string`|30|||
@@ -611,8 +614,8 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## Weight List [/ReferenceData/{TradingEntityId}/Physicals/Weight/{Property}/{PropertyValue}]
+Codes used to describe the units of measurement applied in physical contracts.
 ### List Weights [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -647,11 +650,12 @@ NEW - todo: description
 
 
 # Group WIP Reference Data
-WIP Ledger related reference data
+WIP Ledger related reference data.
 
 ## StockUnit List [/RefrenceData/{TradingEntityId}/WipLedger/StockUnit/{Property}/{PropertyValue}]
+Stock Account profile.
 ### List StockUnits [GET]
-NEW - todo: description
+
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -691,8 +695,8 @@ NEW - todo: description
     + Attributes (404 Response)
 
 ## StockUnit [/RefrenceData/{TradingEntityId}/WipLedger/StockUnit/{StockUnitId}]
+Stock Account profile.
 ### Read StockUnit [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -730,8 +734,8 @@ NEW - todo: description
 Endpoints related to Stock Management, Order Scheduling & Order Processing 
 
 ## ExpedCallOff [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOffs/{ReleaseId}]
+Orders (CallOffs) generated through EXPED
 ### Read ExpedCallOffs [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -783,8 +787,8 @@ NEW - todo: description
 
 
 ## ExpedCallOff List [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOff/{Property}/{PropertyValue}]
+Orders (CallOffs) generated through EXPED
 ### List ExpedCallOff [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -843,8 +847,8 @@ NEW - todo: description
 
 
 ## DeliveryInOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryInOrder/{ReleaseId}]
+Orders (CallOffs) specifically representing incoming goods.
 ### Read DeliveryInOrder [GET]
-NEW - todo: description, request properties, responses, data examples, accessToken
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -869,8 +873,8 @@ NEW - todo: description, request properties, responses, data examples, accessTok
     + Attributes (404 Response)
 
 ## DeliveryOutOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryOutOrder/{ReleaseId}]
+Orders (CallOffs) specifically representing outgoing goods.
 ### Read DeliveryOutOrder [GET]
-NEW - todo: description, request properties, responses, data examples, accessToken
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -894,13 +898,14 @@ NEW - todo: description, request properties, responses, data examples, accessTok
     + Attributes (404 Response)
 
 ## MarkOrderAsProcessed [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/MarkOrderAsProcessed/{ReleaseId}]
+`TBD`
 ### Update MarkOrderAsProcessed [GET]
-NEW - todo: description, request properties, responses, data examples, accessToken
+
 + Response 200 (application/json)
 
 ## StockBatch [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{StockBatchId}]
+Batch record information by Stock Unit
 ### Read StockBatch [GET]
-NEW - todo: add description.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -927,8 +932,8 @@ NEW - todo: add description.
     + Attributes (404 Response)
 
 ## StockBatch List [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{Property}/{PropertyValue}]
+Batch record information by Stock Unit.
 ### List StockBatches [GET]
-NEW - todo: add description.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -959,7 +964,7 @@ NEW - todo: add description.
     + Attributes (404 Response)
 
 ## StockLoading [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockLoading/{ReleaseId}]
-Information specific to the source of the goods generated during any movement (Delivery Out or Stock to Stock)
+Information specific to the source of the goods generated during any movement (Delivery Out or Stock to Stock).
 ### Read StockLoading [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1040,8 +1045,9 @@ Update Stock Unit records. Please note that sending an update will remove any cu
     + Attributes (404 Response)
 
 ## StockMovement [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockMovement/{ReleaseId}]
+Information relating to the processing of the Order. 
 ### Read StockMovement [GET]
-TODO: add description.
+`New` in 2.2.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1133,8 +1139,8 @@ TODO: add description.
     + Attributes (404 Response)
 
 ## StockToStockOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/StockToStockOrder/{ReleaseId}]
+Orders specifically representing movements of goods between Stock Units (aka Manufacturing Orders).
 ### Read StockToStockOrder [GET]
-NEW - todo: description
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
