@@ -479,7 +479,7 @@ NEW - todo: description
 |Status|cmy16_inactive|`string`|1|||
 
 + Response 200 (application/json)
-    + Attributes (array[Port List])
+    + Attributes (array[Port])
     
 + Response 400 (application/json)
     + Attributes (400 BadPropertyResponse)
@@ -1465,19 +1465,19 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + Status: F (string)
 
 ## PaymentTerm (object)
-+ PaymentTermId:  (required, string)
-+ PaymentTermDescription:  (required, string)
-+ DocumentText:  (string)
-+ EDICode:  (string)
-+ Status:  (string)
++ PaymentTermId: ADV (required, string)
++ PaymentTermDescription: Pay in advance (Proforma) (required, string)
++ DocumentText: Text to be used in the sameple document.  (string)
++ EDICode: abc123 (string)
++ Status: F (string)
 
 ## Port
-+ PortId:  (required, string)
-+ PortDescription:  (required, string)
-+ DocumentText:  (string)
-+ CountryCode:  (string)
-+ EDICode:  (string)
-+ Status:  (string)
++ PortId: ARO PORT (required, string)
++ PortDescription: ARO Harbour (required, string)
++ DocumentText: Text to be used in the sameple document.  (string)
++ CountryCode: RO (string)
++ EDICode: abcde12344 (string)
++ Status: F (string)
 
 ## Sample (object)
 + SampleId: 123abc (string)
