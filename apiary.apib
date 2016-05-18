@@ -875,9 +875,8 @@ NEW - todo: add description.
     + Attributes (404 Response)
 
 ## StockLoading [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockLoading/{ReleaseId}]
+Information specific to the source of the goods generated during any movement (Delivery Out or Stock to Stock)
 ### Read StockLoading [GET]
-NEW - todo: add description.
-
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ReleaseId|phys10_releasenr|`number`|||Unique Key|
@@ -901,13 +900,11 @@ NEW - todo: add description.
     + Attributes (404 Response)
 
 ### Create StockLoading [POST]
-NEW - todo: add description.
-
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys10_releasenr|`number`|||Unique Key|
-|SourceStockUnitCode|phys10_tank|`string`|11||must exist in xx_cna50|
-|Weight|phys10_qty|`number`||||
+|ReleaseId|phys10_releasenr|`number`|required||Unique Key|
+|SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
+|Weight|phys10_qty|`number`|required|||
 
 + Parameters
     + TradingEntityId (required, string, `AB`) 
@@ -917,7 +914,8 @@ NEW - todo: add description.
     + Header
             
             AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-    + Attributes (array [StockLoadingList])
+
+    + Attributes (array [StockLoadingFlat])
 
 + Response 200 (application/json)
     + Attributes (200 CreateResponse)
@@ -929,13 +927,13 @@ NEW - todo: add description.
     + Attributes (404 Response)
 
 ### Update StockLoading [PUT]
-Updat Stock Unit records. Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent.
+Update Stock Unit records. Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys10_releasenr|`number`|||Unique Key|
-|SourceStockUnitCode|phys10_tank|`string`|11||must exist in xx_cna50|
-|Weight|phys10_qty|`number`||||
+|ReleaseId|phys10_releasenr|`number`|required||Unique Key|
+|SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
+|Weight|phys10_qty|`number`|required|||
 
 + Parameters
     + TradingEntityId (required, string, `AB`) 
