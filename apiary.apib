@@ -207,6 +207,7 @@ NEW - todo: description
 Nominal (General) Ledger Account profile
 
 ### List NominalAccounts [GET]
+`Updated` this URI's endpoint is now singular, additional objects added to the 200 response.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -299,9 +300,8 @@ Nominal (General) Ledger Account profile
     + Attributes (404 Response)
 
 ## NominalCategory List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalCategory/{Property}/{PropertyValue}]
-Retrieve a list of Nominal categories for a specific Trading Entity.
+User-defined categorisation codes that can be applied to departments and bank accounts
 ### List NominalCategories [GET]
-NEW - todo: description 
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -323,6 +323,9 @@ NEW - todo: description
 
 + Response 200 (application/json)
     + Attributes (array[NominalCatagory])
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
 
 + Response 404 (application/json)
     + Attributes (404 Response)
