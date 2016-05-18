@@ -142,6 +142,7 @@ Codes relating to Nominal Ledger and related endpoints.
 ## Department List [/ReferenceData/{TradingEntityId}/NominalLedger/Department/{Property}/{PropertyValue}]
 Codes used to segregate business sectors within a trading company, and can be applied to contracts and accounting transactions.
 ### List Departments [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -179,6 +180,7 @@ Codes used to segregate business sectors within a trading company, and can be ap
 Codes used to segregate business sectors within a trading company, and can be applied to contracts and accounting transactions.
 
 ### Read Department [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -300,6 +302,8 @@ Nominal (General) Ledger Account profile.
 ## NominalCategory List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalCategory/{Property}/{PropertyValue}]
 User-defined categorisation codes that can be applied to departments and bank accounts.
 ### List NominalCategories [GET]
+`New` endpoint for the 2.2 release.
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |NominalCategoryId|cmy50_category|`string`|2||Unique Key |
@@ -381,6 +385,7 @@ Codes relating to Physicals Trading and related endpoints
 ## Commodity List [/ReferenceData/{TradingEntityId}/Physicals/Commodity/{Property}/{PropertyValue}]
 Commodity/Product codes, used to identify goods.
 ### List Commodities [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -425,6 +430,7 @@ Commodity/Product codes, used to identify goods.
 ## PackingType List [/ReferenceData/{TradingEntityId}/Physicals/PackingType/{Property}/{PropertyValue}]
 Codes used to describe the units of packing applied in physical contracts.
 ### List PackingTypes [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -458,6 +464,7 @@ Codes used to describe the units of packing applied in physical contracts.
 Codes used to describe terms of payment applied to physical contracts through to accounting
 ### List PaymentTerms [GET]
 `Updated` URI is now singular, added error responses.
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |PaymentTermId|cmy15_pterms|`string`|8|||
@@ -482,6 +489,7 @@ Codes used to describe terms of payment applied to physical contracts through to
 Codes used to identify physical port locations.
 ### List Ports [GET]
 `Updated` URI is now singular, added error responses.
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |PortId|cmy16_port|`string`|8|||
@@ -506,6 +514,7 @@ Codes used to identify physical port locations.
 ## Sample List [/ReferenceData/{TradingEntityId}/Physicals/Sample/{Property}/{PropertyValue}]
 Codes used to identify specific product qualities.
 ### List Samples [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -537,6 +546,7 @@ Codes used to identify specific product qualities.
 ## ShippingStatus List [/ReferenceData/{TradingEntityId}/Physicals/ShippingStatus/{Property}/{PropertyValue}]
 Codes used to classify the status in terms of movement, useful for reporting purposes.
 ### List ShippingStatuses [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -565,6 +575,7 @@ Codes used to classify the status in terms of movement, useful for reporting pur
 ## Terminal List [/ReferenceData/{TradingEntityId}/Physicals/Terminal/{Property}/{PropertyValue}]
 Codes used to identify specific terminal location, useful for reporting purposes.
 ### List Terminals [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -596,6 +607,7 @@ Codes used to identify specific terminal location, useful for reporting purposes
 List of Vessel names that can be applied as part of any physical logistics strategy
 ### List Vessels [GET]
 `Updated` URI is now singular, added error responses.
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |VesselId|ves01_vessel|`string`|30|||
@@ -618,6 +630,7 @@ List of Vessel names that can be applied as part of any physical logistics strat
 ## Weight List [/ReferenceData/{TradingEntityId}/Physicals/Weight/{Property}/{PropertyValue}]
 Codes used to describe the units of measurement applied in physical contracts.
 ### List Weights [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -657,7 +670,7 @@ WIP Ledger related reference data.
 ## StockUnit List [/RefrenceData/{TradingEntityId}/WipLedger/StockUnit/{Property}/{PropertyValue}]
 Stock Account profile.
 ### List StockUnits [GET]
-
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -738,6 +751,7 @@ Endpoints related to Stock Management, Order Scheduling & Order Processing
 ## ExpedCallOff [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOffs/{ReleaseId}]
 Orders (CallOffs) generated through EXPED
 ### Read ExpedCallOffs [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -791,6 +805,7 @@ Orders (CallOffs) generated through EXPED
 ## ExpedCallOff List [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOff/{Property}/{PropertyValue}]
 Orders (CallOffs) generated through EXPED
 ### List ExpedCallOff [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -851,6 +866,7 @@ Orders (CallOffs) generated through EXPED
 ## DeliveryInOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryInOrder/{ReleaseId}]
 Orders (CallOffs) specifically representing incoming goods.
 ### Read DeliveryInOrder [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -877,6 +893,7 @@ Orders (CallOffs) specifically representing incoming goods.
 ## DeliveryOutOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryOutOrder/{ReleaseId}]
 Orders (CallOffs) specifically representing outgoing goods.
 ### Read DeliveryOutOrder [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -908,6 +925,7 @@ Orders (CallOffs) specifically representing outgoing goods.
 ## StockBatch [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{StockBatchId}]
 Batch record information by Stock Unit
 ### Read StockBatch [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -936,6 +954,7 @@ Batch record information by Stock Unit
 ## StockBatch List [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{Property}/{PropertyValue}]
 Batch record information by Stock Unit.
 ### List StockBatches [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -968,6 +987,8 @@ Batch record information by Stock Unit.
 ## StockLoading [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockLoading/{ReleaseId}]
 Information specific to the source of the goods generated during any movement (Delivery Out or Stock to Stock).
 ### Read StockLoading [GET]
+`New` endpoint for the 2.2 release.
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ReleaseId|phys10_releasenr|`number`|||Unique Key|
@@ -991,6 +1012,8 @@ Information specific to the source of the goods generated during any movement (D
     + Attributes (404 Response)
 
 ### Create StockLoading [POST]
+`New` endpoint for the 2.2 release.
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ReleaseId|phys10_releasenr|`number`||required|Unique Key|
@@ -1018,7 +1041,7 @@ Information specific to the source of the goods generated during any movement (D
     + Attributes (404 Response)
 
 ### Update StockLoading [PUT]
-Update Stock Unit records. Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent.
+`New` endpoint for the 2.2 release.<br /> Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1049,7 +1072,7 @@ Update Stock Unit records. Please note that sending an update will remove any cu
 ## StockMovement [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockMovement/{ReleaseId}]
 Information relating to the processing of the Order. 
 ### Read StockMovement [GET]
-`New` in 2.2.
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1093,7 +1116,7 @@ Information relating to the processing of the Order.
     + Attributes (404 Response)
 
 ### Update StockMovement [PUT]
-TODO: add description.
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1143,6 +1166,7 @@ TODO: add description.
 ## StockToStockOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/StockToStockOrder/{ReleaseId}]
 Orders specifically representing movements of goods between Stock Units (aka Manufacturing Orders).
 ### Read StockToStockOrder [GET]
+`New` endpoint for the 2.2 release.
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
