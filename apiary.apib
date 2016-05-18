@@ -902,9 +902,9 @@ Information specific to the source of the goods generated during any movement (D
 ### Create StockLoading [POST]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys10_releasenr|`number`|required||Unique Key|
+|ReleaseId|phys10_releasenr|`number`||required|Unique Key|
 |SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
-|Weight|phys10_qty|`number`|required|||
+|Weight|phys10_qty|`number`|\|required||
 
 + Parameters
     + TradingEntityId (required, string, `AB`) 
@@ -931,9 +931,9 @@ Update Stock Unit records. Please note that sending an update will remove any cu
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys10_releasenr|`number`|required||Unique Key|
+|ReleaseId|phys10_releasenr|`number`||required|Unique Key|
 |SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
-|Weight|phys10_qty|`number`|required|||
+|Weight|phys10_qty|`number`||required||
 
 + Parameters
     + TradingEntityId (required, string, `AB`) 
