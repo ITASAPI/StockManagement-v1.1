@@ -240,7 +240,21 @@ Nominal (General) Ledger Account profile
     + Attributes (404 Response)
 
 ## NominalAccount [/ReferenceData/{TradingEntityId}/NominalLedger/NominalAccount/{NominalAccountId}]
+Nominal (General) Ledger Account profile
+
+
 ### Read NominalAccount [GET]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|NominalAccountId|nhr20_acc|`string`|9|||
+|MainGroupingDescription|nhr20_titdescr|`string`|40|||
+|DetailDescription|nhr20_detdescr|`string`|40|||
+|BankAccount|nhr20_bankacc|`number`||||
+|PrivilegeLevel|nhr20_priv|`string`|1|||
+|EDICode|nhr20_altcode|`string`|30|||
+|Status|nhr20_status|`string`|1|||
+
 + Request
     [AccessToken][]
 
@@ -256,7 +270,25 @@ Nominal (General) Ledger Account profile
     + Attributes (404 Response)
     
 ### Update NominalAccount [PUT]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|NominalAccountId|nhr20_acc|`string`|9|||
+|MainGroupingDescription|nhr20_titdescr|`string`|40|||
+|DetailDescription|nhr20_detdescr|`string`|40|||
+|BankAccount|nhr20_bankacc|`number`||||
+|PrivilegeLevel|nhr20_priv|`string`|1|||
+|EDICode|nhr20_altcode|`string`|30|||
+|Status|nhr20_status|`string`|1|||
+
 + Response 200 (application/json)
+    + Attributes (200 CreateResponse)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## NominalCategory List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalCategory/{Property}/{PropertyValue}]
 Retrieve a list of Nominal categories for a specific Trading Entity.
@@ -1354,7 +1386,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + MainGroupingDescription: Direct Costs (string)
 + DetailDescription: Container Freight (string)
 + BankAccount: true (boolean) 
-+ PrivilegeLevel: 5 (number) 
++ PrivilegeLevel: 5 (string) 
 + EDICode: ext12345678 (string) 
 + Status: O (string)
 
