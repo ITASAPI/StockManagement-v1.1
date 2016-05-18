@@ -302,7 +302,6 @@ Nominal (General) Ledger Account profile
 ## NominalCategory List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalCategory/{Property}/{PropertyValue}]
 User-defined categorisation codes that can be applied to departments and bank accounts
 ### List NominalCategories [GET]
-
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |NominalCategoryId|cmy50_category|`string`|2||Unique Key |
@@ -918,7 +917,7 @@ NEW - todo: add description.
     + Header
             
             AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-    + Attributes (array [ClientTypeList])
+    + Attributes (array [StockLoadingList])
 
 + Response 200 (application/json)
     + Attributes (200 CreateResponse)
@@ -1440,9 +1439,9 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + Weight: 100 (string)
 
 ## StockLoadingFlat (object)
-+ ReleaseId: 123 (number)
-+ SourceStockUnitCode: xyz (string)
-+ Weight: 100 (number)
++ ReleaseId: 123 (required, number)
++ SourceStockUnitCode: xyz (required, string)
++ Weight: 100 (required, number)
 
 ## StockMovement (object)
 + ReleaseId: 100 (number)
