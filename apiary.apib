@@ -479,7 +479,7 @@ NEW - todo: description
 |Status|cmy16_inactive|`string`|1|||
 
 + Response 200 (application/json)
-    + Attributes (array [Port])
+    + Attributes (array [Port List])
     
 + Response 400 (application/json)
     + Attributes (400 BadPropertyResponse)
@@ -1475,7 +1475,15 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + PortId: AQABA (required, string)
 + PortDescription: Aqaba (required, string)
 + DocumentText: Text to be used in the sameple document.  (string)
-+ CountryCode: JO (string)
++ Country: (County)
++ EDICode: abcde12344 (string)
++ Status: F (string)
+
+## Port List
++ PortId: AQABA (required, string)
++ PortDescription: Aqaba (required, string)
++ DocumentText: Text to be used in the sameple document.  (string)
++ CountryCode (Country))
 + EDICode: abcde12344 (string)
 + Status: F (string)
 
