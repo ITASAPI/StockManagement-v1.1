@@ -1108,10 +1108,11 @@ Information relating to the processing of the Order.
 
             AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
-   + Attributes (StockMovement)
-
 + Response 200 (application/json)
     + Attributes (StockMovement)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
 
 + Response 404 (application/json)
     + Attributes (404 Response)
@@ -1155,8 +1156,8 @@ Information relating to the processing of the Order.
 
    + Attributes (StockMovement Flat)
 
-+ Response 200 (application/json)
-    + Attributes (200 CreateResponse)
++ Response 201 (application/json)
+    + Attributes (201 UpdateResponse)
 
 + Response 400 (application/json)
     + Attributes (400 Response)
@@ -1581,6 +1582,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + SourceStockUnitCode: xyz (required, string)
 + Weight: 100 (required, number)
 
+
 ## StockMovement (object)
 + ReleaseId: 100 (number)
 + OrderAcknowledged: N (string)
@@ -1589,25 +1591,20 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + NetDeliveredWeight: 10.00 (number)
 + LoadedDate: 20160101 (string)
 + PumpedDate: 20160101 (string)
-+ TargetStockId: 5100.MET (string)
-+ ArrivalDetails
-    + ArrivalDate: 20160101 (string)
-    + ArrivalMemo: notes field (string)
-    + ArrivalWeight: 10.00 (number)
-+ LoadingStartDetails
-    + LoadingStartDate: 20160101 (string)
-    + LoadingStartMemo: notes field (string)
-+ LoadingEndDetails
-    + LoadingEndDate: 20160101 (string)
-    + LoadingPoint: tring (string)
-+ FirstWeightDetails
-    + FirstWeight: 10.00 (number)
-    + FirstWeightWeighbridgeId: abc123 (string)
-    + FirstWeightId: abc123 (string)
-+ SecondWeightDetails
-    + SecondWeight: 10.00 (number)
-    + SecondWeightWeighbridgeId: cde456 (string)
-    + SecondWeightId: cde456 (string)
++ TargetStockUnit (StockUnit)
++ ArrivalDate: 20160101 (string)
++ ArrivalMemo: notes field (string)
++ ArrivalWeight: 10.00 (number)
++ LoadingStartDate: 20160101 (string)
++ LoadingStartMemo: notes field (string)
++ LoadingEndDate: 20160101 (string)
++ LoadingPoint: tring (string)
++ FirstWeight: 10.00 (number)
++ FirstWeightWeighbridgeId: abc123 (string)
++ FirstWeightId: abc123 (string)
++ SecondWeight: 10.00 (number)
++ SecondWeightWeighbridgeId: cde456 (string)
++ SecondWeightId: cde456 (string)
 
 ## StockMovement Flat (object)
 + ReleaseId: 100 (number)
