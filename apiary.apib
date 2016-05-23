@@ -475,6 +475,15 @@ Codes used to describe terms of payment applied to physical contracts through to
 
 + Request
     [AccessToken][]
+    
++ Parameters
+    + TradingEntityId: AB (required, string) ... identify specific trading entity
+    + Property (optional, enum[string]) ... identify property name to filter by 
+       + Members
+            + PaymentTermsId (optional, string) 
+            + EDICode (optional, string)
+            + Status (optional, string)
+    + PropertyValue (optional, string, `O`) ... required if property specified.
 
 + Response 200 (application/json)
     + Attributes (array[PaymentTerm])
