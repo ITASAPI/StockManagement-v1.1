@@ -729,7 +729,7 @@ Stock Account profile.
 |StockUnitDescription|cna50_descr|`string`|60|||
 |Terminal||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/terminals-list">Terminals List</a> endpoint||
 |Department||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/nominal-reference-data/department/department-list">Department</a> endpoint||
-|Commodity||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/commodities-list">Commodies List</a> endpoint||
+|Commodity||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/commodities-list">Commodity List</a> endpoint||
 |NominalAccount||`object`||Nominal Account delivered as an <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/accountheader">AccountHeader</a> object||
 |StockOwner||`object`||Stock Owner delivered as an <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/accountheader">AccountHeader</a> object||
 |ReleaseState|cna50_siemenrel|`number`||||
@@ -783,11 +783,11 @@ Orders (CallOffs) generated through EXPED
 |DeliveryClientSecondaryReference|phys01_delsecref|`string`|40|||
 |<strong>GoodsDetails</strong>|
 |Terminal||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/terminals-list">Terminals List</a> endpoint||
-|Commodity||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/commodities-list">Commodies List</a> endpoint||
-|Sample||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/sample-list">Samples List</a> endpoint||
-|UnitOfMeasurement||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/weight-list">Weights List</a> endpoint||
+|Commodity||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/commodities-list">Commodity List</a> endpoint||
+|Sample||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/sample-list">Sample List</a> endpoint||
+|UnitOfMeasurement||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/weight-list">Weight List</a> endpoint||
 |Quantity|phys01_conquan|`number`||||
-|PackingType||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/packingtype-list">PackingType List</a> endpoint||
+|PackingType||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/packingtype-list">PackingType List</a> endpoint||
 |<strong>TransportDetails</strong>|
 |DeliveryClient||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
 |Haulier||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
@@ -1424,14 +1424,14 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + ReleaseId: 12345 (number)
 + ExpedOrderDetails (ExpedCallOff)
 + PumpingMemo: memp text ges here (string)
-+ ProcessComplete: 1 (boolean)
++ ProcessComplete: true (boolean)
 + TargetStockUnitCode (StockUnit)
 
 ## DeliveryOutOrder (object)
 + ReleaseId: 12345 (number)
 + ExpedOrderDetails (ExpedCallOff)
 + PumpingMemo: memp text ges here (string)
-+ ProcessComplete: 1 (boolean)
++ ProcessComplete: true (boolean)
 + SourceStockUnitDetails (array [StockLoading])
 
 ## Department (object)
