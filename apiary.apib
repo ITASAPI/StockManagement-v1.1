@@ -699,7 +699,7 @@ Stock Account profile.
 |StockOwnerCode|cna50_owner|`string`|50||must exist in xx_chr20|
 |ReleaseState|cna50_siemenrel|`number`||||
 |CurrentStatus|cna50_siemenstatus|`number`||||
-|PrivilegeLevel|cna50_priv|`number`|1||0-9|
+|PrivilegeLevel|cna50_priv|`string`|1||0-9|
 |EDICode|cna50_c2cacc|`string`|9|||
 |Status|cna50_status|`string`|1||`O` or `F`|
 
@@ -741,7 +741,7 @@ Stock Account profile.
 |StockOwner||`object`||Stock Owner delivered as an <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/accountheader">AccountHeader</a> object||
 |ReleaseState|cna50_siemenrel|`number`||||
 |CurrentStatus|cna50_siemenstatus|`number`||||
-|PrivilegeLevel|cna50_priv|`number`|1||0-9|
+|PrivilegeLevel|cna50_priv|`string`|1||0-9|
 |EDICode|cna50_c2cacc|`string`|9|||
 |Status|cna50_status|`string`|1||`O` or `F`|
 
@@ -1665,7 +1665,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + StockOwner (AccountHeaderC)
 + ReleaseState: abc (string)
 + CurrentStatus: def (string)
-+ PrivilegeLevel: 5 (number)
++ PrivilegeLevel: 5 (string)
 + EDICode: ext12345678 (string) 
 + Status: O (string)
 
@@ -1679,7 +1679,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + StockOwnerCode: 0500.0000 (string)
 + ReleaseState: 123 (number)
 + CurrentStatus: 456 (number)
-+ PrivilegeLevel: 5 (number)
++ PrivilegeLevel: 5 (string)
 + EDICode: ext12345678 (string) 
 + Status: O (string)
 
