@@ -890,7 +890,7 @@ Orders (CallOffs) specifically representing incoming goods.
 |ReleaseId|phys09_releasenr|`number`|0|||
 |ExpedOrderDetails||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
 |PumpingMemo|phys09_pumpmemo|`string`|250|||
-|ProcessComplete|phys09_processed|`boolean`|1|||
+|ProcessComplete|phys09_processed|`string`|1|||
 |TargetStockUnitCode||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
 
 
@@ -917,7 +917,7 @@ Orders (CallOffs) specifically representing outgoing goods.
 |ReleaseId|phys09_releasenr|`number`|0|||
 |ExpedOrderDetails||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
 |PumpingMemo|phys09_pumpmemo|`string`|250|||
-|ProcessComplete|phys09_processed|`boolean`|1|||
+|ProcessComplete|phys09_processed|`string`|1|||
 |SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="http://docs.itasapiv2r2.apiary.io/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
 
 + Request
@@ -1431,14 +1431,14 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + ReleaseId: 12345 (number)
 + ExpedOrderDetails (ExpedCallOff)
 + PumpingMemo: memp text ges here (string)
-+ ProcessComplete: true (boolean)
++ ProcessComplete: Y (string)
 + TargetStockUnitCode (StockUnit)
 
 ## DeliveryOutOrder (object)
 + ReleaseId: 12345 (number)
 + ExpedOrderDetails (ExpedCallOff)
 + PumpingMemo: memp text ges here (string)
-+ ProcessComplete: true (boolean)
++ ProcessComplete: Y (string)
 + SourceStockUnitDetails (array [StockLoading])
 
 ## Department (object)
