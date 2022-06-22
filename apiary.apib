@@ -34,7 +34,7 @@ Pile Stock Intake
 |--------|-----------|----|----------|-----|----------|
 |ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
 |StockTankId|Stock Tank ID|`string`|11|Tank in Contract Terminal|Required|
-|Quantity|Quantity|`decimal`|||Required|
+|Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
 
 
@@ -48,6 +48,7 @@ Pile Stock Intake
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity. 
+    + ContractId (required, string, `P00004.000`)
 
 + Request (application/json)
     + Header
