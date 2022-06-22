@@ -58,8 +58,13 @@ Pile Stock Intake
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponse)
+        + Data (ContractSplitResponseTrue)
         + Response (201 CreateResponse)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (ContractSplitResponseFalse)
+        + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
@@ -109,7 +114,7 @@ Non Pile Stock Intake
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponse)
+        + Data (NonPileStockIntakeResponse)
         + Response (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -253,9 +258,19 @@ A multipurpose object used by several endpoints.
 ## accessToken (object)
 + Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg 
 
-## ContractSplitResponse (object)
+## ContractSplitResponseFalse (object)
++ ContractId: P00001.001 (string)
++ IsSplit: false (boolean)
+
+## ContractSplitResponseTrue (object)
 + ContractId: P00001.002 (string)
 + IsSplit: true (boolean)
+
+## NonPileStockIntakeResponse (object)
++ ContractId: P00001.002 (string)
++ IsSplit: true (boolean)
++ WarehouseRecords (array [WarehouseRecord])
+
 
 ## PileStockIntake (object)
 + ContractId: P00001.001 (string)
