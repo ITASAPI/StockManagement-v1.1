@@ -110,7 +110,7 @@ Non Pile Stock Intake
 
             AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
 
-    + Attributes (PileStockIntake)
+    + Attributes (NonPileStockIntake)
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
@@ -266,6 +266,15 @@ A multipurpose object used by several endpoints.
 + ContractId: P00001.002 (string)
 + IsSplit: true (boolean)
 
+## NonPileStockIntake (object)
++ ContractId: P00001.001 (required, string)
++ WarehouseId: SISWHRS.P (required, string)
++ Quantity: 100 (required, number)
++ NumberOfLots: 1 (required, number)
++ Units: 1000 (number)
++ IntakeDate: `2022-06-22T00:00:00Z` (string)
++ WarehouseEntries (array [WarehouseEntry])
+
 ## NonPileStockIntakeResponse (object)
 + ContractId: P00001.002 (string)
 + IsSplit: true (boolean)
@@ -273,13 +282,13 @@ A multipurpose object used by several endpoints.
 
 
 ## PileStockIntake (object)
-+ ContractId: P00001.001 (string)
-+ StockTankId: SISSILO.000 (string)
-+ Quantity: 1000 (number)
++ ContractId: P00001.001 (required, string)
++ StockTankId: SISSILO.000 (required, string)
++ Quantity: 1000 (required, number)
 + IntakeDate: `2022-06-22T00:00:00Z` (string)
 
 ## WarehouseEntry (object)
-+ Quantity: 100 (number)
++ Quantity: 100 (required, number)
 + Units: 1000 (number)
 + ShedCode: W1 (string)
 + DateOfManufacture: `2022-06-22T00:00:00Z` (string)
