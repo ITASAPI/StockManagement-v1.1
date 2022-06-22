@@ -24,10 +24,10 @@ Model Header containing AccessToken
 # Group Production Schedular
 Processes relating to the Production Scheduling and related endpoints.
 
-## Pile Stock Intake [/Production/{TradingEntityId}/Schedular/PileStockIntake/{ContractId}]
+## Pile Stock Intake [/Production/{TradingEntityId}/Schedular/PileStockIntake]
 Pile Stock Intake
-### Update Pile Stock Intake [PUT]
-`PUT` Update Pile Stock Intake and create split if quantity is less than call off quantity.
+### Pile Stock Intake Update [PUT]
+`PUT` Pile Stock Intake update and create split if quantity is less than call off quantity.
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -47,8 +47,7 @@ Pile Stock Intake
 |IsSplit|Is Split|`boolean`||||
 
 + Parameters
-    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity. 
-    + ContractId (required, string, `P00004.000`)
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
 
 + Request (application/json)
     + Header
@@ -71,6 +70,95 @@ Pile Stock Intake
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
+## Non Pile Stock Intake [/Production/{TradingEntityId}/Schedular/NonPileStockIntake]
+Non Pile Stock Intake
+### Non Pile Stock Intake Create [POST]
+`POST` Non Pile Stock Intake, Creates Contract and Intake record per lot. Split created if quantity is less than call off quantity
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
+|Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
+|NumberOfLots|Number of Lots|`decimal`||Not Exceed Call Off Qty|Required|
+|WarehouseId|Warhouse ID|`string`|11|Warhouse in Contract Terminal||
+|Units|Units|`decimal`||In Contract Packing Units||
+|IntakeDate|Intake Date|`datetime`||Defaults to today||
+|WarehouseEntries|see <b><a href="/#reference/production-schedular/pile-stock-intake">Warehouse Entries</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received||
+
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`||||
+|IsSplit|Is Split|`boolean`||||
+|WarehouseRecords|see <b><a href="/#reference/production-schedular/pile-stock-intake">Warehouse Record</a></b> object|[array] of `object`||||
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity. 
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (PileStockIntake)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (ContractSplitResponse)
+        + Response (201 CreateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+
+# Group Data Object Definitions
+List of re-usable Data Objects referenced as `object` types. Not that these endpoints are not accessable and only here for reference purposes.
+
+## Warehouse Entry [/WarehouseEntry]
+A multipurpose object used by several endpoints. 
+
+### Warehouse Entry[GET]
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|Quantity|Quantity|`decimal`|||Required|
+|Units|Units|`decimal`||||
+|ShedCode|Shed Code|`string`|8|Shed in the Warehouse||
+|Container|Container|`string`|15|||
+|DateOfManufacture|Date Of Manufacture|`datetime`||||
+|CypherNumber|Cypher Number|`number`||||
+|UnitNumber|Unit Number|`number`||||
+|FactoryNumber|Factory Number|`number`||||
+|DamagedMissingBags|Damaged or Missing Bags|`number`||Creates Weight Loss split on Purchase Contract||
+
+
++ Response 200 (application/json; charset=utf-8)
++ Attributes (WarehouseEntry)
+
+## Warehouse Record [/WarehouseRecord]
+A multipurpose object used by several endpoints. 
+
+### Warehouse Record[GET]
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`||||
+|ReleaseId|Release ID|`number`||||
+
+
++ Response 200 (application/json; charset=utf-8)
++ Attributes (WarehouseRecord)
 
 
 # Data Structures
@@ -166,12 +254,25 @@ Pile Stock Intake
 + Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg 
 
 ## ContractSplitResponse (object)
-+ ContractId (string)
-+ IsSplit (boolean)
++ ContractId: P00001.002 (string)
++ IsSplit: true (boolean)
 
 ## PileStockIntake (object)
-+ ContractId: P00004.000 (string)
++ ContractId: P00001.001 (string)
 + StockTankId: SISSILO.000 (string)
 + Quantity: 1000 (number)
 + IntakeDate: `2022-06-22T00:00:00Z` (string)
 
+## WarehouseEntry (object)
++ Quantity: 100 (number)
++ Units: 1000 (number)
++ ShedCode: W1 (string)
++ DateOfManufacture: `2022-06-22T00:00:00Z` (string)
++ CypherNumber: 100 (number)
++ UnitNumber: 202 (number)
++ FactoryNumber: 201 (number)
++ DamagedMissingBags: 2 (number)
+
+## WarehouseRecord (object)
++ ContractId: 800002.000 (string)
++ ReleaseId: 500 (number)
