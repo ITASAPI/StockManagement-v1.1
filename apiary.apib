@@ -26,7 +26,7 @@ Model Header containing AccessToken
 # Group Production Schedular
 Processes relating to the Production Scheduling and related endpoints.
 
-## Stock Intake Pile [/Production/{TradingEntityId}/Schedular/StockIntakePile]
+## Stock Intake Pile [/Production/{TradingEntityId}/Schedular/StockIntakePile/{ContractId}]
 `PUT` Pile Stock Intake update and create split if quantity is less than call off quantity.
 
 ### Pile Stock Intake Update [PUT]
@@ -39,7 +39,6 @@ Processes relating to the Production Scheduling and related endpoints.
 |Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
 
-
 <hr />
 
 <b>Response Data</b>
@@ -50,6 +49,7 @@ Processes relating to the Production Scheduling and related endpoints.
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ContractId (required, string, `P00001.001`)
 
 + Request (application/json)
     + Header
@@ -88,7 +88,7 @@ Processes relating to the Production Scheduling and related endpoints.
 |ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
 |Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
 |NumberOfLots|Number of Lots|`number`||Number of Warehouse Records to Create|Required|
-|WarehouseCode|Warhouse Code|`string`|11|Warhouse in Contract Terminal||
+|WarehouseCode|Warhouse Code|`string`|10|Warhouse in Contract Terminal||
 |Units|Units|`decimal`||In Contract Packing Units||
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
 |WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entries</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received|Required|
@@ -137,7 +137,7 @@ Processes relating to the Production Scheduling and related endpoints.
 
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
+|ContractId|Contract ID|`string`|10|Taken in Contract|Required|
 
 <hr />
 
@@ -165,6 +165,103 @@ None.
     + Attributes 
         + Data
             + ContractId: P00001.000 (string)
+        + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+## Maintain QA  [/Production/{TradingEntityId}/Schedular/MaintainQA/{ContractId}]
+`PUT` Maintain the Contracts Quality Approved Code
+### Update Quality Approved [PUT]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`|10|Stock Item|Required|
+|QACode|Quality Approved Code|`string`|1||Required|
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`||||
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ContractId (required, string, `P00001.001`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (QualityApproved)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data
+            + ContractId: P00001.001 (string)
+        + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+## Move Stock Within Terminal  [/Production/{TradingEntityId}/Schedular/MaintainQA/{ContractId}]
+`PUT` Move Stock Within Terminal, Create split if quantity to move is less than stock quantity.
+### Move Within Terminal Update [PUT]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`|10|Stock Item|Required|
+|Quantity|Quantity|`number`||May not Exceed Stock Quantity|Required|
+|Units|Units|`decimal`||Number of Units to Move|Required|
+|WarehouseCode|Warehouse Code|`string`|10|Warehouse in Terminal|Required|
+|ShedCode|Shed Code|`string`|8|Shed in Warehouse||
+|WipAccountCode|WIP Account Code|`string`|11|Nominated WIP||
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`||||
+|IsSplit|Is Split|`boolean`||||
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ContractId (required, string, `P00001.001`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (MoveWithinTerminal)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (ContractSplitResponseTrue)
+        + Response (201 CreateResponse)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (ContractSplitResponseFalse)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -317,6 +414,15 @@ A multipurpose object used by several endpoints.
 + ContractId: P00001.002 (string)
 + IsSplit: true (boolean)
 
+## MoveWithinTerminal (object)
++ ContractId: P00001.001 (required, string)
++ Quantity: 5 (required, number)
++ Units: 50 (required, number)
++ WarehouseCode: SISWHRS.P (required, string)
++ ShedCode: W1 (string)
++ WipAccountCode: WIPACC.000 (string)
+
+
 ## NonPileStockIntake (object)
 + ContractId: P00001.001 (required, string)
 + Quantity: 100 (required, number)
@@ -331,12 +437,15 @@ A multipurpose object used by several endpoints.
 + IsSplit: true (boolean)
 + WarehouseRecords (array [WarehouseRecord])
 
-
 ## PileStockIntake (object)
 + ContractId: P00001.001 (required, string)
 + StockTankId: SISSILO.000 (required, string)
 + Quantity: 1000 (required, number)
 + IntakeDate: `2022-06-22T00:00:00Z` (string)
+
+## QualityApproved (object)
++ ContractId: P00001.001 (required, string)
++ QACode: A (required, string)
 
 ## WarehouseEntry (object)
 + Quantity: 100 (required, number)
