@@ -87,9 +87,9 @@ Processes relating to the Production Scheduling and related endpoints.
 |--------|-----------|----|----------|-----|----------|
 |ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
 |Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
-|NumberOfLots|Number of Lots|`number`||Number of Warehouse Records to Create|Required|
+|Lots|Number of Lots|`number`||Number of Warehouse Records to Create|Required|
 |WarehouseCode|Warhouse Code|`string`|10|Warhouse in Contract Terminal||
-|Units|Units|`decimal`||In Contract Packing Units||
+|Units|Number of Units|`decimal`||In Contract Packing Units||
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
 |WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entries</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received|Required|
 
@@ -229,7 +229,7 @@ None.
 |--------|-----------|----|----------|-----|----------|
 |ContractId|Contract ID|`string`|10|Stock Item|Required|
 |Quantity|Quantity|`number`||May not Exceed Stock Quantity|Required|
-|Units|Units|`decimal`||Number of Units to Move|Required|
+|Units|Number of Units|`decimal`||Number of Units to Move|Required|
 |WarehouseCode|Warehouse Code|`string`|10|Warehouse in Terminal|Required|
 |ShedCode|Shed Code|`string`|8|Shed in Warehouse||
 |WipAccountCode|WIP Account Code|`string`|11|Nominated WIP||
@@ -263,6 +263,63 @@ None.
     + Attributes 
         + Data (ContractSplitResponseFalse)
         + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+## Manufacturing Order Create [/Production/{TradingEntityId}/Schedular/ManufacturingOrder]
+`POST` Create Manufacturing Order
+
+### Create Manufacturing Order [POST]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|TerminalCode|Terminal Code|`string`|4||Required|
+|CommodityCodePart1|Commodity Code Part 1|`string`|3||Required|
+|CommodityCodePart2|Commodity Code Part 2|`string`|6|||
+|CommodityCodePart3|Commodity Code Part 3|`string`|6|||
+|CommodityCodePart4|Commodity Code Part 4|`string`|6|||
+|CommodityCodePart5|Commodity Code Part 5|`string`|6|||
+|PackingTypeCode|Packing Type Code|`string`|4||Required|
+|Units|Number of Units|`decimal`|||Required|
+|WarehouseCode|Warehouse Code|`string`|10|||
+|PreAllocationCode|Pre Allocation Code|`string`|10|||
+|TargetDate|Target Date|`datetime`||||
+|Memorandum|Memorandum|`string`|250|||
+|ProcessTypeCode|Process Type Code|`string`|8|||
+
+
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ManufacturingOrderNumber|Manufacturing Order Number|`number`||||
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity. 
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (MOCreate)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Data
+            + ManufacturingOrderNumber: 500 (number)
+        + Response (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
     + Attributes (400 Response)
@@ -414,6 +471,21 @@ A multipurpose object used by several endpoints.
 + ContractId: P00001.002 (string)
 + IsSplit: true (boolean)
 
+## MOCreate (object)
++ TerminalCode: SIS (string)
++ CommodityCodePart1: LGI (string)
++ CommodityCodePart2: LGIWHT (string)
++ CommodityCodePart3: FAIRT (string)
++ CommodityCodePart4: C4 (string)
++ CommodityCodePart5: C5 (string)
++ PackingTypeCode: B25 (string)
++ Units: 100 (number)
++ WarehouseCode: SISWHRS.P (string)
++ PreAllocationCode: AS003.S (string)
++ TargetDate: `2022-06-22T00:00:00Z` (string)
++ Memorandum: Memo (string)
++ ProcessTypeCode: BAGGING (string)
+
 ## MoveWithinTerminal (object)
 + ContractId: P00001.001 (required, string)
 + Quantity: 5 (required, number)
@@ -426,7 +498,7 @@ A multipurpose object used by several endpoints.
 ## NonPileStockIntake (object)
 + ContractId: P00001.001 (required, string)
 + Quantity: 100 (required, number)
-+ NumberOfLots: 1 (required, number)
++ Lots: 1 (required, number)
 + WarehouseCode: SISWHRS.P (string)
 + Units: 1000 (number)
 + IntakeDate: `2022-06-22T00:00:00Z` (string)
