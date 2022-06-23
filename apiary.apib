@@ -10,8 +10,9 @@ VERSION: 1.0
 ## New Endpoints
 
 <ul>
-<li>Production Schedular <b>Pile Stock Intake</b>: Pile Stock Intake Update,<a href="/#reference/production-schedular/pile-stock-intake"> Link</a></li>
-<li>Production Schedular <b>Non Pile Stock Intake</b>: Non Pile Stock Intake Create,<a href="/#reference/production-schedular/non-pile-stock-intake"> Link</a></li>
+<li>Production Schedular <b>Stock Intake Pile</b>: Pile Stock Intake Update,<a href="/#reference/production-schedular/pile-stock-intake"> Link</a></li>
+<li>Production Schedular <b>Stock Intake Non Pile</b>: Non Pile Stock Intake Create,<a href="/#reference/production-schedular/non-pile-stock-intake"> Link</a></li>
+<li>Production Schedular <b>Intake Reverse</b>: Reverse Intake,<a href="/#reference/production-schedular/intake-reverse"> Link</a></li>
 </ul>
 
 ## AccessToken [/]
@@ -25,7 +26,7 @@ Model Header containing AccessToken
 # Group Production Schedular
 Processes relating to the Production Scheduling and related endpoints.
 
-## Pile Stock Intake [/Production/{TradingEntityId}/Schedular/PileStockIntake]
+## Stock Intake Pile [/Production/{TradingEntityId}/Schedular/StockIntakePile]
 `PUT` Pile Stock Intake update and create split if quantity is less than call off quantity.
 
 ### Pile Stock Intake Update [PUT]
@@ -76,7 +77,7 @@ Processes relating to the Production Scheduling and related endpoints.
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
-## Non Pile Stock Intake [/Production/{TradingEntityId}/Schedular/NonPileStockIntake]
+## Stock Intake Non Pile [/Production/{TradingEntityId}/Schedular/StockIntakeNonPile]
 `POST` Non Pile Stock Intake, Creates Contract and Intake record per lot. Split created if quantity is less than call off quantity.
 
 ### Non Pile Stock Intake Create [POST]
@@ -86,11 +87,11 @@ Processes relating to the Production Scheduling and related endpoints.
 |--------|-----------|----|----------|-----|----------|
 |ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
 |Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
-|NumberOfLots|Number of Lots|`decimal`||Not Exceed Call Off Qty|Required|
-|WarehouseId|Warhouse ID|`string`|11|Warhouse in Contract Terminal||
+|NumberOfLots|Number of Lots|`number`||Number of Warehouse Records to Create|Required|
+|WarehouseCode|Warhouse Code|`string`|11|Warhouse in Contract Terminal||
 |Units|Units|`decimal`||In Contract Packing Units||
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
-|WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entries</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received||
+|WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entries</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received|Required|
 
 
 <hr />
@@ -130,7 +131,7 @@ Processes relating to the Production Scheduling and related endpoints.
 ## Intake Reverse [/Production/{TradingEntityId}/Schedular/IntakeReverse/{ContractId}]
 `PUT` Reverses Intake by deleting contract and adding quantity back to header contract
 
-### Intake Reverse Update [PUT]
+### Reverse Intake [PUT]
 
 <strong>URI Parameters</strong>
 
@@ -163,7 +164,7 @@ None.
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data
-            + ContractId: P00001.001 (string)
+            + ContractId: P00001.000 (string)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -318,9 +319,9 @@ A multipurpose object used by several endpoints.
 
 ## NonPileStockIntake (object)
 + ContractId: P00001.001 (required, string)
-+ WarehouseId: SISWHRS.P (required, string)
 + Quantity: 100 (required, number)
 + NumberOfLots: 1 (required, number)
++ WarehouseCode: SISWHRS.P (string)
 + Units: 1000 (number)
 + IntakeDate: `2022-06-22T00:00:00Z` (string)
 + WarehouseEntries (array [WarehouseEntry])
@@ -341,6 +342,7 @@ A multipurpose object used by several endpoints.
 + Quantity: 100 (required, number)
 + Units: 1000 (number)
 + ShedCode: W1 (string)
++ Container: UNIT7 (string)
 + DateOfManufacture: `2022-06-22T00:00:00Z` (string)
 + CypherNumber: 100 (number)
 + UnitNumber: 202 (number)
