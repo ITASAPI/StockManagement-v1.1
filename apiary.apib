@@ -93,7 +93,7 @@ Processes relating to the Production Scheduling and related endpoints.
 |WarehouseCode|Warhouse Code|`string`|10|Warhouse in Contract Terminal||
 |Units|Number of Units|`decimal`||In Contract Packing Units||
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
-|WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entries</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received|Required|
+|WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entry</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received|Required|
 
 
 <hr />
@@ -332,6 +332,110 @@ None.
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
+## Move To Manufacturing Order [/Production/{TradingEntityId}/Schedular/MoveToMO/{ManufacturingOrderNo}]
+`PUT` Move Goods to Manufacturing Order, and create split if quantity to move is less than stock quantity.
+
+### Move to Manufacturing Order Update [PUT]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ManufacturingOrderNo|Manufacturing Order Number|`number`||Existing Non Complete MO|Required|
+|ContractId|Contract ID|`string`|10|Stock Item in MO Terminal|Required|
+|Quantity|Quantity|`decimal`||In Contract Units|Required|
+|Units|Number of Units|`number`||Number of Units to Move|Required|
+|ShedCode|Shed Code|`string`|8|ShedCode in MO Warehouse|Required|
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`||||
+|IsSplit|Is Split|`boolean`||||
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ManufacturingOrderNo (required, number, `500`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (MoveToMO)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (ContractSplitResponseTrue)
+        + Response (201 CreateResponse)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data (ContractSplitResponseFalse)
+        + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+## Complete Manufacturing Order [/Production/{TradingEntityId}/Schedular/CompleteMO]
+`POST` Complete Manufacturing Order, and create M contract
+
+### Complete Manufacturing Order Create [POST]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ManufacturingOrderNo|Manufacuring Order Number |`number`||Existing Non Complete MO|Required|
+|Units|Number of Units|`number`||Units Produced|Required|
+|CompletionDate|Completion Date|`datetime`||Defaults to today||
+|WarehouseCode|Warhouse Code|`string`|10|||
+|ShedCode|Shed Code|`string`|8|||
+|FactoryNumber|Factory Number|`number`||||
+|CypherNumber|Cypher Number|`number`||||
+|ProductLine|Product Line|`number`||||
+|WarehouseOutturns|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Outturn</a></b> object|[array] of `object`||Entries must add up to Units received|Required|
+
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`||||
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity. 
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (CompleteMO)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes 
+        + Data
+            + ContractId: M00001.000 (string)
+        + Response (201 CreateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
 
 
 # Group Data Object Definitions
@@ -345,7 +449,7 @@ A multipurpose object used by several endpoints.
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |Quantity|Quantity|`decimal`|||Required|
-|Units|Units|`decimal`||||
+|Units|Units|`number`||||
 |ShedCode|Shed Code|`string`|8|Shed in the Warehouse||
 |Container|Container|`string`|15|||
 |DateOfManufacture|Date Of Manufacture|`datetime`||||
@@ -357,6 +461,20 @@ A multipurpose object used by several endpoints.
 
 + Response 200 (application/json; charset=utf-8)
 + Attributes (WarehouseEntry)
+
+## Warehouse Outturn [/WarehouseOuturn]
+A multipurpose object used by several endpoints. 
+
+### Warehouse Outturn[GET]
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|Units|Units|`number`|||Required|
+|UnitNumber|Unit Number|`number`||||
+
+
++ Response 200 (application/json; charset=utf-8)
++ Attributes (WarehouseOutturn)
 
 ## Warehouse Record [/WarehouseRecord]
 A multipurpose object used by several endpoints. 
@@ -465,6 +583,17 @@ A multipurpose object used by several endpoints.
 ## accessToken (object)
 + Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg 
 
+## CompleteMO (object)
++ ManufacturingOrderNo: 500 (number)
++ Units: 1000 (number)
++ CompletionDate: `2022-06-22T00:00:00Z` (string)
++ WarehouseCode: SISWHRS.P (string)
++ ShedCode: W1 (string)
++ FactoryNumber: 25 (number)
++ CypherNumber: 10 (number)
++ ProductLine: 15 (number)
++ WarehouseOutturns (array [WarehouseOutturn])
+
 ## ContractSplitResponseFalse (object)
 + ContractId: P00001.001 (string)
 + IsSplit: false (boolean)
@@ -487,6 +616,13 @@ A multipurpose object used by several endpoints.
 + TargetDate: `2022-06-22T00:00:00Z` (string)
 + Memorandum: Memo (string)
 + ProcessTypeCode: BAGGING (string)
+
+## MoveToMO (object)
++ ManufacturingOrderNo: 500 (number)
++ ContractId: P00001.001 (string)
++ Quantity: 5 (number)
++ Units: 50 (number)
++ ShedCode: W1 (string)
 
 ## MoveWithinTerminal (object)
 + ContractId: P00001.001 (required, string)
@@ -531,6 +667,10 @@ A multipurpose object used by several endpoints.
 + UnitNumber: 202 (number)
 + FactoryNumber: 201 (number)
 + DamagedMissingBags: 2 (number)
+
+## WarehouseOutturn (object)
++ Units: 1000 (number)
++ UnitNumber: 2 (number)
 
 ## WarehouseRecord (object)
 + ContractId: 800002.000 (string)
