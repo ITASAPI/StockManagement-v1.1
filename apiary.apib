@@ -26,9 +26,9 @@ Model Header containing AccessToken
 Processes relating to the Production Scheduling and related endpoints.
 
 ## Pile Stock Intake [/Production/{TradingEntityId}/Schedular/PileStockIntake]
-Pile Stock Intake
-### Pile Stock Intake Update [PUT]
 `PUT` Pile Stock Intake update and create split if quantity is less than call off quantity.
+
+### Pile Stock Intake Update [PUT]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -77,9 +77,9 @@ Pile Stock Intake
     + Attributes (405 Response)
 
 ## Non Pile Stock Intake [/Production/{TradingEntityId}/Schedular/NonPileStockIntake]
-Non Pile Stock Intake
+`POST` Non Pile Stock Intake, Creates Contract and Intake record per lot. Split created if quantity is less than call off quantity.
+
 ### Non Pile Stock Intake Create [POST]
-`POST` Non Pile Stock Intake, Creates Contract and Intake record per lot. Split created if quantity is less than call off quantity
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -126,6 +126,55 @@ Non Pile Stock Intake
 
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
+
+## Intake Reverse [/Production/{TradingEntityId}/Schedular/IntakeReverse/{ContractId}]
+`PUT` Reverses Intake by deleting contract and adding quantity back to header contract
+
+### Intake Reverse Update [PUT]
+
+<strong>URI Parameters</strong>
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
+
+<hr />
+
+<strong>Body Parameters</strong>
+
+None.
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ContractId (required, string, `P00001.001`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Body 
+    
+            {
+                none
+            }
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data
+            + ContractId: P00001.001 (string)
+        + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
 
 
 # Group Data Object Definitions
