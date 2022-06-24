@@ -104,7 +104,7 @@ Processes relating to the Production Scheduling and related endpoints.
 |WarehouseCode|Warhouse Code|`string`|10|Warhouse in Contract Terminal||
 |Units|Number of Units|`decimal`||In Contract Packing Units||
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
-|WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entry</a></b> object|[array] of `object`||Entry Per Lot. Entries must add up to Quantity and Units received|Required|
+|WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entry</a></b> object|[array] of `object`||Entries must add up to Quantity and Units received|Required|
 
 
 <hr />
@@ -669,7 +669,7 @@ None.
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
-    + ContractId (required, string, `800001.000`)
+    + ContractId (required, string, `800001.001`)
 
 + Request (application/json)
     + Header
@@ -707,7 +707,7 @@ A multipurpose object used by several endpoints.
 |CostCode|Cost Code|`string`|8||Required|
 |CurrencyCode|Currency Code|`string`|3||Required|
 |RateType|Rate Type|`string`|1||`A`, `R`, `S`, `W`, `%`, `Q`, `C` or `L`|
-|PayableOrReceivable|Payable or Receivable|`string`|||`P` or `R`|
+|PayableOrReceivable|Payable or Receivable|`string`|1||`P` or `R`|
 |Rate|Cost Rate|`decimal`|||Required|
 |PriceTypeCode|Price Type Code|`string`|4|||
 |IsInPnL|Is in PnL|`boolean`||||
@@ -733,7 +733,7 @@ A multipurpose object used by several endpoints.
 |CypherNumber|Cypher Number|`number`||||
 |UnitNumber|Unit Number|`number`||||
 |FactoryNumber|Factory Number|`number`||||
-|DamagedMissingBags|Damaged or Missing Bags|`number`||Creates Weight Loss split on Purchase Contract||
+|DamagedMissingBags|Damaged or Missing Bags|`number`||Creates Weight Loss Split on Purchase Contract||
 
 
 + Response 200 (application/json; charset=utf-8)
