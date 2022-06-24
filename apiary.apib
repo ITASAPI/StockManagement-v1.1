@@ -10,8 +10,8 @@ VERSION: 1.0
 ## New Endpoints
 
 <ul>
-<li>Production Schedular <b>Stock Intake Pile</b>: Pile Stock Intake Update,<a href="/#reference/production-schedular/pile-stock-intake"> Link</a></li>
-<li>Production Schedular <b>Stock Intake Non Pile</b>: Non Pile Stock Intake Create,<a href="/#reference/production-schedular/non-pile-stock-intake"> Link</a></li>
+<li>Production Schedular <b>Stock Intake Pile</b>: Update Pile Stock Intake,<a href="/#reference/production-schedular/pile-stock-intake"> Link</a></li>
+<li>Production Schedular <b>Stock Intake Non Pile</b>: Create Non Pile Stock Intake,<a href="/#reference/production-schedular/non-pile-stock-intake"> Link</a></li>
 <li>Production Schedular <b>Intake Reverse</b>: Reverse Intake,<a href="/#reference/production-schedular/intake-reverse"> Link</a></li>
 <li>Production Schedular <b>Maintain QA</b>: Update Quality Approved,<a href="/#reference/production-schedular/maintain-qa"> Link</a></li>
 <li>Production Schedular <b>Manufacturing Order Create</b>: Create Manufacturing Order,<a href="/#reference/production-schedular/manufacturing-order-create"> Link</a></li>
@@ -31,7 +31,7 @@ Processes relating to the Production Scheduling and related endpoints.
 ## Stock Intake Pile [/Production/{TradingEntityId}/Schedular/StockIntakePile/{ContractId}]
 `PUT` Pile Stock Intake update and create split if quantity is less than call off quantity.
 
-### Pile Stock Intake Update [PUT]
+### Update Pile Stock Intake [PUT]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -82,7 +82,7 @@ Processes relating to the Production Scheduling and related endpoints.
 ## Stock Intake Non Pile [/Production/{TradingEntityId}/Schedular/StockIntakeNonPile]
 `POST` Non Pile Stock Intake, Creates Contract and Intake record per lot. Split created if quantity is less than call off quantity.
 
-### Non Pile Stock Intake Create [POST]
+### Create Non Pile Stock Intake [POST]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -223,7 +223,7 @@ None.
 
 ## Move Stock Within Terminal  [/Production/{TradingEntityId}/Schedular/MaintainQA/{ContractId}]
 `PUT` Move Stock Within Terminal, Create split if quantity to move is less than stock quantity.
-### Move Within Terminal Update [PUT]
+### Move Within Terminal [PUT]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -334,7 +334,7 @@ None.
 ## Move To Manufacturing Order [/Production/{TradingEntityId}/Schedular/MoveToMO/{ManufacturingOrderNo}]
 `PUT` Move Goods to Manufacturing Order, and create split if quantity to move is less than stock quantity.
 
-### Move to Manufacturing Order Update [PUT]
+### Move to Manufacturing Order [PUT]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -386,7 +386,7 @@ None.
 ## Complete Manufacturing Order [/Production/{TradingEntityId}/Schedular/CompleteMO]
 `POST` Complete Manufacturing Order, and create M contract
 
-### Complete Manufacturing Order Create [POST]
+### Complete Manufacturing Order [POST]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -488,7 +488,7 @@ None.
 ## Delivered Quantity Entry [/Production/{TradingEntityId}/Schedular/DeliveredQuantity/{ContractId}]
 `PUT` Delivered Quantity Entry, will split the sale contract if the release quantity is less than the call off quantity.
 
-### Enter Delivered Quantity Update [PUT]
+### Update Delivered Quantity [PUT]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -586,9 +586,9 @@ None.
 
 
 ## Write Off [/Production/{TradingEntityId}/Schedular/WriteOff/{ContractId}]
-`PUT` Pile Stock Intake update and create split if quantity is less than call off quantity.
+`PUT` Write Off, creates split if write off is less than stock quantity
 
-### Write Off Update [PUT]
+### Update Write Off [PUT]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
@@ -640,7 +640,7 @@ None.
 ## Write On [/Production/{TradingEntityId}/Schedular/WriteOn/{ContractId}]
 `PUT` Write on, increase stock quantity
 
-### Write On Update [PUT]
+### Update Write On [PUT]
 
 <b>Request Body</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
