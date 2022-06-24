@@ -408,8 +408,8 @@ None.
 |CompletionDate|Completion Date|`datetime`||Defaults to today||
 |WarehouseCode|Warhouse Code|`string`|10|||
 |ShedCode|Shed Code|`string`|8|||
-|FactoryNumber|Factory Number|`number`||||
-|CypherNumber|Cypher Number|`number`||||
+|FactoryNumber|Factory Number|`string`|4|||
+|CypherNumber|Cypher Number|`string`|15|||
 |ProductLine|Product Line|`string`|1|||
 |WarehouseOutturns|see <b><a href="/#reference/data-object-definitions/warehouse-outturn">Warehouse Outturn</a></b> object|[array] of `object`||Entries must add up to Units received|Required|
 |Costs|see <b><a href="/#reference/data-object-definitions/cost/cost">Cost</a></b> object|[array] of `object`||||
@@ -730,9 +730,9 @@ A multipurpose object used by several endpoints.
 |ShedCode|Shed Code|`string`|8|Shed in the Warehouse||
 |Container|Container|`string`|250|||
 |DateOfManufacture|Date Of Manufacture|`datetime`||||
-|CypherNumber|Cypher Number|`number`||||
+|CypherNumber|Cypher Number|`string`|15|||
 |UnitNumber|Unit Number|`number`||||
-|FactoryNumber|Factory Number|`number`||||
+|FactoryNumber|Factory Number|`string`|4|||
 |DamagedMissingBags|Damaged or Missing Bags|`number`||Creates Weight Loss Split on Purchase Contract||
 
 
@@ -866,8 +866,8 @@ A multipurpose object used by several endpoints.
 + CompletionDate: `2022-06-22T00:00:00Z` (string)
 + WarehouseCode: SISWHRS.P (string)
 + ShedCode: W1 (string)
-+ FactoryNumber: 25 (number)
-+ CypherNumber: 10 (number)
++ FactoryNumber: A1 (string)
++ CypherNumber: BB10 (string)
 + ProductLine: A (string)
 + WarehouseOutturns (array [WarehouseOutturn])
 + Costs (array [Cost])
@@ -964,9 +964,9 @@ A multipurpose object used by several endpoints.
 + ShedCode: W1 (string)
 + Container: UNIT7 (string)
 + DateOfManufacture: `2022-06-22T00:00:00Z` (string)
-+ CypherNumber: 100 (number)
++ CypherNumber: BB10 (string)
 + UnitNumber: 202 (number)
-+ FactoryNumber: 201 (number)
++ FactoryNumber: A1 (string)
 + DamagedMissingBags: 2 (number)
 
 ## WarehouseOutturn (object)
