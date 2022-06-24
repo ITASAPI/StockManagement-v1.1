@@ -130,10 +130,10 @@ Processes relating to the Production Scheduling and related endpoints.
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
-## Intake Reverse [/Production/{TradingEntityId}/Schedular/IntakeReverse/{ContractId}]
-`PUT` Reverses Intake by deleting contract and adding quantity back to header contract
+## Stock Intake Reverse [/Production/{TradingEntityId}/Schedular/StockIntakeReverse/{ContractId}]
+`PUT` Reverses Stock Intake by deleting contract and adding quantity back to header contract
 
-### Reverse Intake [PUT]
+### Reverse Stock Intake [PUT]
 
 <strong>URI Parameters</strong>
 
@@ -401,7 +401,7 @@ None.
 |CypherNumber|Cypher Number|`number`||||
 |ProductLine|Product Line|`string`|1|||
 |WarehouseOutturns|see <b><a href="/#reference/data-object-definitions/warehouse-outturn">Warehouse Outturn</a></b> object|[array] of `object`||Entries must add up to Units received|Required|
-|Costs|see <b><a href="/#reference/data-object-definitions/warehouse-outturn">Costs</a></b> object|[array] of `object`||||
+|Costs|see <b><a href="/#reference/data-object-definitions/cost/cost">Cost</a></b> object|[array] of `object`||||
 
 
 <hr />
@@ -437,6 +437,148 @@ None.
 + Response 405 (application/json; charset=utf-8)
     + Attributes (405 Response)
 
+## Manufacturing Order Completion Reverse [/Production/{TradingEntityId}/Schedular/MOCompletionReverse/{ContractId}]
+`PUT` Reverses Manufacturing Order Completion, Will reject if any part of the contract is allocated or invoiced
+
+### Reverse Manufacturing Order Completion [PUT]
+
+<strong>URI Parameters</strong>
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`|10|M Contract Created from MO|Required|
+
+<hr />
+
+<strong>Body Parameters</strong>
+
+None.
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ContractId (required, string, `M00001.001`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Body 
+    
+            {
+                none
+            }
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data
+            + ContractId: M00001.000 (string)
+        + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+
+## Delivered Quantity Entry [/Production/{TradingEntityId}/Schedular/DeliveredQuantity/{ContractId}]
+`PUT` Delivered Quantity Entry, will split the sale contract if the release quantity is less than the call off quantity.
+
+### Enter Delivered Quantity Update [PUT]
+
+<b>Request Body</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`|10|Stock Item|Required|
+|Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
+|EntryDate|Entry Date|`datetime`||Defaults to today||
+
+<hr />
+
+<b>Response Data</b>
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`||||
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ContractId (required, string, `S00001.001`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (DeliveredQtyEntry)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data
+            + ContractId: S00001.001 (string)
+        + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
+
+
+## Delivered Quantity Reverse [/Production/{TradingEntityId}/Schedular/DeliveredQuantityReverse/{ContractId}]
+`PUT` Reverses Delivered Quantity, Will reject if any part of the contract is invoiced
+
+### Reverse Delivered Quantity [PUT]
+
+<strong>URI Parameters</strong>
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|Contract ID|`string`|10|M Contract Created from MO|Required|
+
+<hr />
+
+<strong>Body Parameters</strong>
+
+None.
+
+
++ Parameters
+    + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
+    + ContractId (required, string, `S00001.001`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Body 
+    
+            {
+                none
+            }
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes 
+        + Data
+            + ContractId: S00001.001 (string)
+        + Response (200 UpdateResponse)
+
++ Response 400 (application/json; charset=utf-8)
+    + Attributes (400 Response)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (404 Response)
+
++ Response 405 (application/json; charset=utf-8)
+    + Attributes (405 Response)
 
 
 # Group Data Object Definitions
@@ -635,6 +777,11 @@ A multipurpose object used by several endpoints.
 + IsInPnL: true (boolean)
 + IsInPol: false (boolean)
 + Narrative: ABCD (string)
+
+## DeliveredQtyEntry (object)
++ ContractId: S00001.001 (string)
++ Quantity: 100 (number)
++ EntryDate: `2022-06-22T00:00:00Z` (string)
 
 ## MOCreate (object)
 + TerminalCode: SIS (string)
