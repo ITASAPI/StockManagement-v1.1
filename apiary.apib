@@ -399,8 +399,9 @@ None.
 |ShedCode|Shed Code|`string`|8|||
 |FactoryNumber|Factory Number|`number`||||
 |CypherNumber|Cypher Number|`number`||||
-|ProductLine|Product Line|`number`||||
+|ProductLine|Product Line|`string`|1|||
 |WarehouseOutturns|see <b><a href="/#reference/data-object-definitions/warehouse-outturn">Warehouse Outturn</a></b> object|[array] of `object`||Entries must add up to Units received|Required|
+|Costs|see <b><a href="/#reference/data-object-definitions/warehouse-outturn">Costs</a></b> object|[array] of `object`||||
 
 
 <hr />
@@ -441,6 +442,27 @@ None.
 # Group Data Object Definitions
 List of re-usable Data Objects referenced as `object` types. Not that these endpoints are not accessable and only here for reference purposes.
 
+## Cost [/Costs]
+A multipurpose object used by several endpoints. 
+
+### Cost[GET]
+
+|Property|Description|Type|Max Length|Notes|Constraint|
+|--------|-----------|----|----------|-----|----------|
+|CostCode|Cost Code|`string`|8||Required|
+|CurrencyCode|Currency Code|`string`|3|||
+|RateType|Rate Type|`string`|1||`A`, `R`, `S`, `W`, `%`, `Q`, `C` or `L`|
+|PriceTypeCode|Price Type Code|`string`|4|||
+|PayableOrReceivable|Payable or Receivable|`string`|||`P` or `R`|
+|Rate|Cost Rate|`decimal`||||
+|IsInPnL|Is in PnL|`boolean`||||
+|IsInPol|Is in Polarisation|`boolean`||||
+|Narrative|Narrative|`string`|50|||
+
+
++ Response 200 (application/json; charset=utf-8)
++ Attributes (Cost)
+
 ## Warehouse Entry [/WarehouseEntry]
 A multipurpose object used by several endpoints. 
 
@@ -451,7 +473,7 @@ A multipurpose object used by several endpoints.
 |Quantity|Quantity|`decimal`|||Required|
 |Units|Units|`number`||||
 |ShedCode|Shed Code|`string`|8|Shed in the Warehouse||
-|Container|Container|`string`|15|||
+|Container|Container|`string`|250|||
 |DateOfManufacture|Date Of Manufacture|`datetime`||||
 |CypherNumber|Cypher Number|`number`||||
 |UnitNumber|Unit Number|`number`||||
@@ -591,8 +613,9 @@ A multipurpose object used by several endpoints.
 + ShedCode: W1 (string)
 + FactoryNumber: 25 (number)
 + CypherNumber: 10 (number)
-+ ProductLine: 15 (number)
++ ProductLine: A (string)
 + WarehouseOutturns (array [WarehouseOutturn])
++ Costs (array [Cost])
 
 ## ContractSplitResponseFalse (object)
 + ContractId: P00001.001 (string)
@@ -601,6 +624,17 @@ A multipurpose object used by several endpoints.
 ## ContractSplitResponseTrue (object)
 + ContractId: P00001.002 (string)
 + IsSplit: true (boolean)
+
+## Cost (object)
++ CostCode: INS (string)
++ CurrencyCode: GBP (string)
++ RateType: A (string)
++ PriceTypeCode: PMT (string)
++ PayableOrReceivable: R (string)
++ Rate: 12 (number)
++ IsInPnL: true (boolean)
++ IsInPol: false (boolean)
++ Narrative: ABCD (string)
 
 ## MOCreate (object)
 + TerminalCode: SIS (string)
