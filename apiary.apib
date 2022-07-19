@@ -102,7 +102,7 @@ Processes relating to the Production Scheduling and related endpoints.
 |ContractId|Contract ID|`string`|10|Called Off Purchase Contract|Required|
 |Quantity|Quantity|`decimal`||Not Exceed Call Off Qty|Required|
 |WarehouseCode|Warhouse Code|`string`|10|Warhouse in Contract Terminal||
-|Units|Number of Units|`decimal`||In Contract Packing Units||
+|Units|Number of Units|`number`||In Contract Packing Units||
 |IntakeDate|Intake Date|`datetime`||Defaults to today||
 |WarehouseEntries|see <b><a href="/#reference/data-object-definitions/warehouse-entry/warehouse-entry">Warehouse Entry</a></b> object|[array] of `object`||Entries must add up to Quantity and Units received|Required|
 
@@ -242,7 +242,7 @@ None.
 |--------|-----------|----|----------|-----|----------|
 |ContractId|Contract ID|`string`|10|Stock Item|Required|
 |Quantity|Quantity|`number`||May not Exceed Stock Quantity|Required|
-|Units|Number of Units|`decimal`||Number of Units to Move|Required|
+|Units|Number of Units|`number`||Number of Units to Move|Required|
 |WarehouseCode|Warehouse Code|`string`|10|Warehouse in Terminal|Required|
 |ShedCode|Shed Code|`string`|8|Shed in Warehouse||
 |WipAccountCode|WIP Account Code|`string`|11|Nominated WIP||
@@ -301,7 +301,7 @@ None.
 |CommodityCodePart4|Commodity Code Part 4|`string`|6|||
 |CommodityCodePart5|Commodity Code Part 5|`string`|6|||
 |PackingTypeCode|Packing Type Code|`string`|4||Required|
-|Units|Number of Units|`decimal`|||Required|
+|Units|Number of Units|`number`|||Required|
 |WarehouseCode|Warehouse Code|`string`|10|||
 |PreAllocationCode|Pre Allocation Code|`string`|10|||
 |TargetDate|Target Date|`datetime`||||
@@ -607,7 +607,7 @@ None.
 |--------|-----------|----|----------|-----|----------|
 |ContractId|Contract ID|`string`|10|Stock Item|Required|
 |Quantity|Quantity|`decimal`||Not Exceed Stock Qty|Required|
-|Units|Number of Units|`decimal`||Number of Units to Move|Required|
+|Units|Number of Units|`number`||Number of Units to Move|Required|
 |WriteOffDate|Write Off Date|`datetime`||Defaults to today||
 
 <hr />
