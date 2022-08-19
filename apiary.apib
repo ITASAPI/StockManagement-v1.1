@@ -731,7 +731,7 @@ A multipurpose object used by several endpoints.
 |Container|Container|`string`|250|||
 |DateOfManufacture|Date Of Manufacture|`datetime`||||
 |CypherNumber|Cypher Number|`string`|15|||
-|UnitNumber|Unit Number|`number`||||
+|UnitNumber|Unit Number|`string`||||
 |FactoryNumber|Factory Number|`string`|4|||
 |DamagedMissingBags|Damaged or Missing Bags|`number`||Creates Weight Loss Split on Purchase Contract||
 
@@ -747,7 +747,7 @@ A multipurpose object used by several endpoints.
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |Units|Units|`number`|||Required|
-|UnitNumber|Unit Number|`number`||||
+|UnitNumber|Unit Number|`string`||||
 
 
 + Response 200 (application/json; charset=utf-8)
@@ -965,13 +965,13 @@ A multipurpose object used by several endpoints.
 + Container: UNIT7 (string)
 + DateOfManufacture: `2022-06-22T00:00:00Z` (string)
 + CypherNumber: BB10 (string)
-+ UnitNumber: 202 (number)
++ UnitNumber: 202 (string)
 + FactoryNumber: A1 (string)
 + DamagedMissingBags: 2 (number)
 
 ## WarehouseOutturn (object)
 + Units: 1000 (number)
-+ UnitNumber: 2 (number)
++ UnitNumber: 2 (string)
 
 ## WarehouseRecord (object)
 + ContractId: 800002.000 (string)
