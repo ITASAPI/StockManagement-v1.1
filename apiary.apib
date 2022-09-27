@@ -304,8 +304,9 @@ None.
 |WarehouseCode|Warehouse Code|`string`|10|||
 |PreAllocationCode|Pre Allocation Code|`string`|10|||
 |TargetDate|Target Date|`datetime`||||
+|OrderDate|Order Date|`datetime`||||
 |Memorandum|Memorandum|`string`|250|||
-|ProcessTypeCode|Process Type Code|`string`|8|||
+|Status|Status|`string`|8|||
 
 
 
@@ -907,14 +908,15 @@ A multipurpose object used by several endpoints.
 + TerminalCode: SIS (string)
 + CommodityCodePart1: LGI (string)
 + CommodityCodePart2: LGIWHT (string)
-+ CommodityCodePart3: FAIRT (string)
++ CommodityCodePart3: B25 (string)
 + PackingTypeCode: B25 (string)
 + Units: 100 (number)
 + WarehouseCode: SISWHRS.P (string)
 + PreAllocationCode: AS003.S (string)
 + TargetDate: `2022-06-22T00:00:00Z` (string)
++ OrderDate: `2022-06-20T00:00:00Z` (string)
 + Memorandum: Memo (string)
-+ ProcessTypeCode: BAGGING (string)
++ Status: CUBE (string)
 
 ## MoveToMO (object)
 + ManufacturingOrderNo: 500 (number)
