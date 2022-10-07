@@ -405,6 +405,7 @@ None.
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
 |ManufacturingOrderNo|Manufacuring Order Number |`number`||Existing Non Complete MO|Required|
+|UniqueId|Unique ID|`number`|||
 |Units|Number of Units|`number`||Units Produced|Required|
 |CompletionDate|Completion Date|`datetime`||Defaults to today||
 |WarehouseCode|Warhouse Code|`string`|10|||
@@ -708,13 +709,10 @@ A multipurpose object used by several endpoints.
 |--------|-----------|----|----------|-----|----------|
 |CostCode|Cost Code|`string`|8||Required|
 |CurrencyCode|Currency Code|`string`|3||Required|
-|RateType|Rate Type|`string`|1||`A`, `R`, `S`, `W`, `%`, `Q`, `C` or `L`|
+|RateType|Rate Type|`string`|12||`Amount`, `Rate`, `SplitAmount`, `WeightRate`, `Percent`, `DailyPercent`, `PerContainer` or `PerRailCar`|
 |PayableOrReceivable|Payable or Receivable|`string`|1||`P` or `R`|
 |Rate|Cost Rate|`decimal`|||Required|
 |PriceTypeCode|Price Type Code|`string`|4|||
-|IsInPnL|Is in PnL|`boolean`||||
-|IsInPol|Is in Polarisation|`boolean`||||
-|Narrative|Narrative|`string`|50|||
 
 
 + Response 200 (application/json; charset=utf-8)
@@ -864,6 +862,7 @@ A multipurpose object used by several endpoints.
 
 ## CompleteMO (object)
 + ManufacturingOrderNo: 500 (number)
++ UniqueId: 2 (number)
 + Units: 1000 (number)
 + CompletionDate: `2022-06-22T00:00:00Z` (string)
 + WarehouseCode: SISWHRS.P (string)
@@ -893,13 +892,10 @@ A multipurpose object used by several endpoints.
 ## Cost (object)
 + CostCode: INS (string)
 + CurrencyCode: GBP (string)
-+ RateType: A (string)
-+ PriceTypeCode: PMT (string)
++ RateType: Amount (string)
 + PayableOrReceivable: R (string)
 + Rate: 12 (number)
-+ IsInPnL: true (boolean)
-+ IsInPol: false (boolean)
-+ Narrative: ABCD (string)
++ PriceTypeCode: PMT (string)
 
 ## DeliveredQtyEntry (object)
 + ContractId: S00001.001 (string)
