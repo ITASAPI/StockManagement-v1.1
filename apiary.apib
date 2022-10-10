@@ -422,7 +422,7 @@ None.
 <b>Response Data</b>
 |Property|Description|Type|Max Length|Notes|Constraint|
 |--------|-----------|----|----------|-----|----------|
-|ContractId|Contract ID|`string`||||
+|WarehouseRecords|see <b><a href="/#reference/data-object-definitions/warehouse-record/warehouse-record">Warehouse Record</a></b> object|[array] of `object`||||
 
 
 + Parameters
@@ -437,8 +437,7 @@ None.
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data
-            + ContractId: M00001.000 (string)
+        + Data (MOCompleteResponse)
         + Response (201 CreateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -902,6 +901,9 @@ A multipurpose object used by several endpoints.
 + Quantity: 100 (number)
 + EntryDate: `2022-06-22T00:00:00Z` (string)
 + Units: 50 (number)
+
+## MOCompleteResponse (object)
++ WarehouseRecords (array [WarehouseRecord])
 
 ## MOCreate (object)
 + TerminalCode: SIS (string)
