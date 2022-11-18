@@ -207,7 +207,7 @@ None.
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
-    + ContractId (required, string, `800001.001`)
+    + ContractId (required, string, `800001.000`)
 
 + Request (application/json)
     + Header
@@ -219,7 +219,7 @@ None.
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data
-            + ContractId: P00001.001 (string)
+            + ContractId: 800001.000 (string)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -955,7 +955,7 @@ A multipurpose object used by several endpoints.
 + IntakeDate: `2022-06-22T00:00:00Z` (string)
 
 ## QualityApproved (object)
-+ ContractId: 800001.001 (required, string)
++ ContractId: 800001.000 (required, string)
 + QACode: A (required, string)
 
 ## WarehouseEntry (object)
