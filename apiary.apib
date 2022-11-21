@@ -858,16 +858,16 @@ A multipurpose object used by several endpoints.
 + Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg 
 
 ## CompleteMO (object)
-+ ManufacturingOrderNo: 500 (number)
++ ManufacturingOrderNo: 500 (required, number)
 + UniqueId: 2 (number)
-+ Units: 1000 (number)
++ Units: 1000 (required, number)
 + CompletionDate: `2022-06-22T00:00:00Z` (string)
 + WarehouseCode: SISWHRS.P (string)
 + ShedCode: W1 (string)
 + FactoryNumber: A1 (string)
 + CypherNumber: BB10 (string)
 + ProductLine: A (string)
-+ WarehouseOutturns (array [WarehouseOutturn])
++ WarehouseOutturns (required, array [WarehouseOutturn])
 + Costs (array [Cost])
 
 ## ContractSplitResponseFalse (object)
@@ -895,8 +895,8 @@ A multipurpose object used by several endpoints.
 + PriceTypeCode: PMT (string)
 
 ## DeliveredQtyEntry (object)
-+ ContractId: S00001.001 (string)
-+ Quantity: 100 (number)
++ ContractId: S00001.001 (required, string)
++ Quantity: 100 (required, number)
 + EntryDate: `2022-06-22T00:00:00Z` (string)
 + Units: 50 (number)
 
@@ -904,12 +904,12 @@ A multipurpose object used by several endpoints.
 + WarehouseRecords (array [WarehouseRecordMContract])
 
 ## MOCreate (object)
-+ TerminalCode: SIS (string)
-+ CommodityCodePart1: LGI (string)
++ TerminalCode: SIS (required, string)
++ CommodityCodePart1: LGI (required, string)
 + CommodityCodePart2: LGIWHT (string)
 + CommodityCodePart3: B25 (string)
-+ PackingTypeCode: B25 (string)
-+ Units: 100 (number)
++ PackingTypeCode: B25 (required, string)
++ Units: 100 (required, number)
 + Quantity: 50 (number)
 + WarehouseCode: SISWHRS.P (string)
 + PreAllocationCode: AS003.S (string)
@@ -919,11 +919,11 @@ A multipurpose object used by several endpoints.
 + StatusCode: CUBE (string)
 
 ## MoveToMO (object)
-+ ManufacturingOrderNo: 500 (number)
-+ ContractId: P00001.001 (string)
-+ Quantity: 5 (number)
++ ManufacturingOrderNo: 500 (required, number)
++ ContractId: P00001.001 (required, string)
++ Quantity: 5 (required, number)
++ ShedCode: W1 (required, string)
 + Units: 50 (number)
-+ ShedCode: W1 (string)
 
 ## MoveWithinTerminal (object)
 + ContractId: P00001.001 (required, string)
@@ -941,7 +941,7 @@ A multipurpose object used by several endpoints.
 + WarehouseCode: SISWHRS.P (string)
 + Units: 1000 (number)
 + IntakeDate: `2022-06-22T00:00:00Z` (string)
-+ WarehouseEntries (array [WarehouseEntry])
++ WarehouseEntries (required, array [WarehouseEntry])
 
 ## NonPileStockIntakeResponse (object)
 + ContractId: P00001.002 (string)
@@ -988,5 +988,5 @@ A multipurpose object used by several endpoints.
 + WriteOffDate: `2022-06-22T00:00:00Z` (string)
 
 ## WriteOn (object)
-+ ContractId: 800001.000 (string)
-+ QuantityIncrease: 10 (number)
++ ContractId: 800001.000 (required, string)
++ QuantityIncrease: 10 (required, number)
