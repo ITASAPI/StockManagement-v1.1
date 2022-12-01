@@ -175,7 +175,7 @@ None.
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data
-            + ContractId: P00001.000 (string)
+            + ContractId: P00001.001 (string)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -257,7 +257,7 @@ None.
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
-    + ContractId (required, string, `P00001.001`)
+    + ContractId (required, string, `800001.000`)
 
 + Request (application/json)
     + Header
@@ -268,12 +268,12 @@ None.
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponseTrue)
+        + Data (Contract8SplitResponseTrue)
         + Response (201 CreateResponse)
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponseFalse)
+        + Data (Contract8SplitResponseFalse)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -377,12 +377,12 @@ None.
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponseTrue)
+        + Data (Contract8SplitResponseTrue)
         + Response (201 CreateResponse)
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponseFalse)
+        + Data (Contract8SplitResponseFalse)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -483,7 +483,7 @@ None.
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
         + Data
-            + ContractId: M00001.000 (string)
+            + ContractId: M00001.001 (string)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -636,7 +636,7 @@ None.
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponseFalse)
+        + Data (Contract8SplitResponseFalse)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -928,7 +928,7 @@ A multipurpose object used by several endpoints.
 
 ## MoveToMO (object)
 + ManufacturingOrderNo: 500 (required, number)
-+ ContractId: P00001.001 (required, string)
++ ContractId: 800001.000 (required, string)
 + Quantity: 5 (required, number)
 + ShedCode: W1 (required, string)
 + Units: 50 (number)
