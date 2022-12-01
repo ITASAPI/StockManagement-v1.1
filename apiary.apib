@@ -636,7 +636,7 @@ None.
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes 
-        + Data (Contract8SplitResponseFalse)
+        + Data (Contract8HeaderSplitResponseFalse)
         + Response (200 UpdateResponse)
 
 + Response 400 (application/json; charset=utf-8)
@@ -878,6 +878,10 @@ A multipurpose object used by several endpoints.
 + ContractId: 800001.001 (string)
 + IsSplit: false (boolean)
 
+## Contract8HeaderSplitResponseFalse (object)
++ ContractId: 800001.000 (string)
++ IsSplit: false (boolean)
+
 ## ContractSplitSaleResponseFalse (object)
 + ContractId: S00001.001 (string)
 + IsSplit: false (boolean)
@@ -891,7 +895,7 @@ A multipurpose object used by several endpoints.
 + IsSplit: true (boolean)
 
 ## ContractSplitSaleResponseTrue (object)
-+ ContractId: S00001.002 (string)
++ ContractId: S00001.001 (string)
 + IsSplit: true (boolean)
 
 ## Cost (object)
@@ -934,7 +938,7 @@ A multipurpose object used by several endpoints.
 + Units: 50 (number)
 
 ## MoveWithinTerminal (object)
-+ ContractId: P00001.001 (required, string)
++ ContractId: 800001.000 (required, string)
 + Quantity: 5 (required, number)
 + Units: 50 (required, number)
 + WarehouseCode: SISWHRS.P (required, string)
