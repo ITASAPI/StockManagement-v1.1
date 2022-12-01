@@ -631,7 +631,7 @@ None.
 
 + Response 201 (application/json; charset=utf-8)
     + Attributes 
-        + Data (ContractSplitResponseTrue)
+        + Data (Contract8SplitResponseTrue)
         + Response (201 CreateResponse)
 
 + Response 200 (application/json; charset=utf-8)
@@ -669,7 +669,7 @@ None.
 
 + Parameters
     + TradingEntityId (required, string, `JT`) ... Identify specific trading entity.
-    + ContractId (required, string, `800001.001`)
+    + ContractId (required, string, `800001.000`)
 
 + Request (application/json)
     + Header
@@ -874,12 +874,20 @@ A multipurpose object used by several endpoints.
 + ContractId: P00001.001 (string)
 + IsSplit: false (boolean)
 
+## Contract8SplitResponseFalse (object)
++ ContractId: 800001.001 (string)
++ IsSplit: false (boolean)
+
 ## ContractSplitSaleResponseFalse (object)
 + ContractId: S00001.001 (string)
 + IsSplit: false (boolean)
 
 ## ContractSplitResponseTrue (object)
 + ContractId: P00001.002 (string)
++ IsSplit: true (boolean)
+
+## Contract8SplitResponseTrue (object)
++ ContractId: 800001.002 (string)
 + IsSplit: true (boolean)
 
 ## ContractSplitSaleResponseTrue (object)
